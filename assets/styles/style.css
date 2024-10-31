@@ -3,15 +3,47 @@ body {
     margin: 0;
     background-color: rgb(219, 253, 217);
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* --- HEADER --- */
 header {
     background-color: rgb(149, 194, 105);
     color: rgb(219, 253, 217);
-    margin: 0;
+    width: 100%;
     padding: 0.5rem;
     text-align: center;
+}
+
+/* --- SCORE --- */
+.score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    background-color: rgb(195, 228, 183);
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+}
+
+/* Style pour chaque section dans .score */
+.score .ScorePlayer, .score .ScoreComputer {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.score .ScorePlayer h2, .score .ScoreComputer h2 {
+    margin: 0;
+    color: rgb(50, 50, 50);
+}
+
+.score .ScorePlayer p span, .score .ScoreComputer p span {
+    font-size: 3rem;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
 }
 
 /* --- GAME --- */
