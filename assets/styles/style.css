@@ -13,7 +13,7 @@ header {
     background-color: rgb(149, 194, 105);
     color: rgb(219, 253, 217);
     width: 100%;
-    padding: 0.5rem;
+    padding: 0.1rem;
     text-align: center;
 }
 
@@ -23,15 +23,13 @@ header {
     justify-content: center;
     align-items: center;
     gap: 5rem;
-    background-color: rgb(195, 228, 183);
-    padding: 0.5rem 1rem;
-    border-radius: 10px;
-    margin-top: 1rem;
+    padding: 0.1rem 1rem;
+    margin-top: 0.5rem;
 }
 
 .score .ScorePlayer, .score .ScoreComputer {
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 1rem;
 }
 
 .score .ScorePlayer h2, .score .ScoreComputer h2 {
@@ -40,9 +38,13 @@ header {
 }
 
 .score .ScorePlayer p span, .score .ScoreComputer p span {
-    font-size: 3rem;
-    font-weight: bold;
+    font-size: 2rem;
     color: rgb(0, 0, 0);
+}
+
+.replay a{
+    color: rgb(0, 0, 0);
+    font-size: 2rem;
 }
 
 /* --- GAME --- */
@@ -51,7 +53,7 @@ header {
     justify-content: center;
     align-items: center;
     gap: 50vh;
-    margin-top: 2rem;
+    margin-top: 0.5rem;
 }
 
 /* --- PLAYER & COMPUTER ICONS --- */
@@ -59,12 +61,14 @@ header {
     font-size: 25vh;
     color: rgb(0, 0, 0);
     transform: rotate(90deg);
+    visibility: hidden;
 }
 
 .Computer {
     font-size: 25vh;
     color: rgb(0, 0, 0);
     transform: rotate(270deg) scaleX(-1);
+    visibility: hidden;
 }
 
 /* --- CHOICE --- */
