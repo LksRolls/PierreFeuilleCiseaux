@@ -17,6 +17,14 @@ header {
     text-align: center;
 }
 
+header h1 span.instruction {
+    display: block;
+    font-size: 1.2rem;
+    color: gre;
+    margin-top: 0.5rem;
+    visibility:visible;
+}
+
 /* --- SCORE --- */
 .score {
     display: flex;
@@ -61,14 +69,14 @@ header {
     font-size: 25vh;
     color: rgb(0, 0, 0);
     transform: rotate(90deg);
-    visibility: hidden;
+    visibility: hidden; 
 }
 
 .Computer {
     font-size: 25vh;
     color: rgb(0, 0, 0);
     transform: rotate(270deg) scaleX(-1);
-    visibility: hidden;
+    visibility: hidden; 
 }
 
 /* --- CHOICE --- */
@@ -92,14 +100,14 @@ header {
 }
 
 .choice section a:hover {
-    transform: scale(1.1); /* Zoom léger au survol */
+    transform: scale(1.1); 
 }
 
 .choice section a:active {
-    transform: scale(0.95); /* Effet de clic */
+    transform: scale(0.95);
 }
 
 .choice section i {
-    font-size: 4rem; /* Taille des icônes */
-    color: rgb(255, 255, 255); /* Couleur de l'icône */
+    font-size: 4rem;
+    color: rgb(255, 255, 255); 
 }
