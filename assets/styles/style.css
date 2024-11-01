@@ -24,15 +24,14 @@ header {
     align-items: center;
     gap: 5rem;
     background-color: rgb(195, 228, 183);
-    padding: 1rem 2rem;
+    padding: 0.5rem 1rem;
     border-radius: 10px;
     margin-top: 1rem;
 }
 
-/* Style pour chaque section dans .score */
 .score .ScorePlayer, .score .ScoreComputer {
     text-align: center;
-    font-size: 2rem;
+    font-size: 0.8rem;
 }
 
 .score .ScorePlayer h2, .score .ScoreComputer h2 {
@@ -77,8 +76,26 @@ header {
     margin-top: 3rem;
 }
 
-/* --- ICONES CHOICE --- */
 .Pierre, .Feuille, .Ciseaux {
     font-size: 20vh;
     color: rgb(0, 0, 0);
+}
+
+.choice section a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.choice section a:hover {
+    transform: scale(1.1); /* Zoom léger au survol */
+}
+
+.choice section a:active {
+    transform: scale(0.95); /* Effet de clic */
+}
+
+.choice section i {
+    font-size: 4rem; /* Taille des icônes */
+    color: rgb(255, 255, 255); /* Couleur de l'icône */
 }
