@@ -1,80 +1,103 @@
-// Sélection des éléments nécessaires
-const choices = ["Pierre", "Feuille", "Ciseaux"];
-const playerImage = document.querySelector('.Player img');
-const computerImage = document.querySelector('.Computer img');
-const resultText = document.querySelector('.result'); // Conteneur pour afficher le résultat
+// Variables globales pour stocker les scores
+let playerScore = 0;
+let computerScore = 0;
 
-// Fonction pour obtenir un choix aléatoire de l'ordinateur
-function getComputerChoice() {
-    const randomIndex = Math.floor(Math.random() * choices.length);
-    return choices[randomIndex];
+// Fonction pour actualiser l'affichage des scores
+function updateScore() {
+    document.querySelector(".ScorePlayer p span").textContent = playerScore;
+    document.querySelector(".ScoreComputer p span").textContent = computerScore;
+    console.log(`Scores mis à jour - Joueur: ${playerScore}, Ordinateur: ${computerScore}`);
 }
 
-// Fonction pour déterminer le résultat
-function determineResult(playerChoice, computerChoice) {
+// Fonction pour afficher le choix du joueur
+function displayPlayerChoice(playerChoice) {
+    const playerImage = document.querySelector(".Player img");
+    playerImage.src = `assets/img/${playerChoice}.svg`; // Remplacez par le chemin correct de vos images
+    playerImage.style.visibility = "visible";
+    console.log(`Affichage du choix du joueur: ${playerChoice}`);
+}
+
+// Fonction pour afficher le choix de l'ordinateur
+function displayComputerChoice(computerChoice) {
+    const computerImage = document.querySelector(".Computer img");
+    computerImage.src = `assets/img/${computerChoice}.svg`; // Remplacez par le chemin correct de vos images
+    computerImage.style.visibility = "visible";
+    console.log(`Affichage du choix de l'ordinateur: ${computerChoice}`);
+}
+
+// Fonction pour afficher le résultat du jeu
+function displayResult(result) {
+    const resultSection = document.querySelector(".result");
+    resultSection.textContent = result;
+    console.log(`Résultat affiché: ${result}`);
+}
+
+// Fonction pour vérifier le résultat du jeu et actualiser le score
+function checkResult(playerChoice, computerChoice) {
+    console.log(`Choix du joueur: ${playerChoice}, Choix de l'ordinateur: ${computerChoice}`);
+    
     if (playerChoice === computerChoice) {
-        return "Égalité !";
+        return "Égalité";
     } else if (
         (playerChoice === "Pierre" && computerChoice === "Ciseaux") ||
         (playerChoice === "Ciseaux" && computerChoice === "Feuille") ||
         (playerChoice === "Feuille" && computerChoice === "Pierre")
     ) {
-        return "Victoire !";
+        playerScore++;
+        updateScore(); // Actualise le score du joueur
+        return "Vous gagnez !";
     } else {
-        return "Défaite !";
+        computerScore++;
+        updateScore(); // Actualise le score de l'ordinateur
+        return "L'ordinateur gagne !";
     }
 }
 
-// Fonction pour afficher le choix et le résultat
-function displayChoicesAndResult(playerChoice, computerChoice, result) {
-    // Mettre à jour les images du joueur et de l'ordinateur
-    playerImage.src = `assets/img/${playerChoice}.svg`;
-    playerImage.style.visibility = 'visible';
-
-    computerImage.src = `assets/img/${computerChoice}.svg`;
-    computerImage.style.visibility = 'visible';
-
-    // Afficher le résultat
-    resultText.textContent = result;
-}
-
-// Fonction principale qui lance le jeu
-function mainGame(playerChoice) {
-    // Étape 1 : Obtenir le choix de l'ordinateur
+// Fonction principale
+function playGame(playerChoice) {
+    console.log(`Le joueur a choisi: ${playerChoice}`);
+    displayPlayerChoice(playerChoice);
+    
     const computerChoice = getComputerChoice();
-
-    // Étape 2 : Déterminer le résultat
-    const result = determineResult(playerChoice, computerChoice);
-
-    // Étape 3 : Afficher les choix et le résultat
-    displayChoicesAndResult(playerChoice, computerChoice, result);
+    displayComputerChoice(computerChoice);
+    
+    const result = checkResult(playerChoice, computerChoice);
+    displayResult(result);
 }
 
-// Ajouter un écouteur d'événements sur chaque choix du joueur
-document.querySelectorAll('.choice section a').forEach((choiceElement, index) => {
-    choiceElement.addEventListener('click', function(event) {
-        event.preventDefault();
-        const playerChoice = choices[index];
-        mainGame(playerChoice); // Lancer le jeu avec le choix du joueur
+// Fonction pour obtenir un choix aléatoire pour l'ordinateur
+function getComputerChoice() {
+    const choices = ["Pierre", "Feuille", "Ciseaux"];
+    const randomIndex = Math.floor(Math.random() * choices.length);
+    return choices[randomIndex];
+}
+
+// Ajout des écouteurs d'événement pour les images de choix
+document.querySelectorAll(".choice section img").forEach((img) => {
+    img.addEventListener("click", (event) => {
+        const playerChoice = event.target.alt;
+        console.log(`Image cliquée, choix du joueur: ${playerChoice}`);
+        playGame(playerChoice);
     });
 });
 
-// Bouton de refresh pour réinitialiser les images et le texte du résultat
-document.querySelector('.replay a').addEventListener('click', function() {
-    const refreshIcon = this.querySelector('img');
+// Fonction de réinitialisation des scores et des choix
+function resetGame() {
+    playerScore = 0;
+    computerScore = 0;
+    updateScore(); // Remet les scores à zéro
+    hideChoices();
+    console.log("Le jeu a été réinitialisé.");
+}
 
-    // Ajouter l'animation de rotation à l'icône de refresh
-    refreshIcon.classList.add('rotate');
+// Fonction pour masquer les choix
+function hideChoices() {
+    document.querySelector(".Player img").style.visibility = "hidden";
+    document.querySelector(".Computer img").style.visibility = "hidden";
+    document.querySelector(".result").style.visibility = "hidden";;
+}
 
-    // Rendre les images du joueur et de l'ordinateur invisibles
-    playerImage.style.visibility = 'hidden';
-    computerImage.style.visibility = 'hidden';
-
-    // Effacer le texte du résultat
-    resultText.textContent = "";
-
-    // Supprimer la classe de rotation après 1 seconde pour pouvoir relancer l'animation au prochain clic
-    setTimeout(() => {
-        refreshIcon.classList.remove('rotate');
-    }, 1000);
+// Ajout d'un écouteur d'événement pour le bouton de réinitialisation
+document.querySelector(".replay a").addEventListener("click", () => {
+    resetGame();
 });
