@@ -28,9 +28,26 @@ function displayComputerChoice(computerChoice) {
 // Fonction pour afficher le résultat du jeu
 function displayResult(result) {
     const resultSection = document.querySelector(".result");
+
+    // Supprimer toutes les classes de style dynamique
+    resultSection.classList.remove("victory", "defeat", "draw");
+
+    // Ajouter une classe basée sur le résultat
+    if (result === "Vous gagnez !") {
+        resultSection.classList.add("victory");
+    } else if (result === "L'ordinateur gagne !") {
+        resultSection.classList.add("defeat");
+    } else {
+        resultSection.classList.add("draw");
+    }
+
+    // Mettre à jour le texte du résultat et rendre la section visible
     resultSection.textContent = result;
+    resultSection.style.visibility = "visible"; // Assurez-vous qu'elle est visible
+    resultSection.style.display = "block"; // Ajoutez un display:block si nécessaire
     console.log(`Résultat affiché: ${result}`);
 }
+
 
 // Fonction pour vérifier le résultat du jeu et actualiser le score
 function checkResult(playerChoice, computerChoice) {
@@ -90,11 +107,13 @@ function resetGame() {
     console.log("Le jeu a été réinitialisé.");
 }
 
-// Fonction pour masquer les choix
+// Fonction pour masquer les choix et le texte des résultats
 function hideChoices() {
     document.querySelector(".Player img").style.visibility = "hidden";
     document.querySelector(".Computer img").style.visibility = "hidden";
-    document.querySelector(".result").style.visibility = "hidden";;
+    const resultSection = document.querySelector(".result");
+    resultSection.style.visibility = "hidden";
+    resultSection.textContent = ""; // Supprime le texte du résultat
 }
 
 // Ajout d'un écouteur d'événement pour le bouton de réinitialisation
