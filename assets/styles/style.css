@@ -83,6 +83,13 @@ header h1 span.instruction {
     }
 }
 
+/* Affichage du resltat en texte */
+.result{
+    height: 1rem;
+    width: 5rem;
+    text-align: center;
+}
+
 /* --- GAME --- */
 .Game {
     display: flex;
