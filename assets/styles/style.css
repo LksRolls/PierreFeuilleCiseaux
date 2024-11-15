@@ -20,9 +20,9 @@ header {
 header h1 span.instruction {
     display: block;
     font-size: 1.2rem;
-    color: gre;
+    color: grey;
     margin-top: 0.5rem;
-    visibility:visible;
+    visibility: visible;
 }
 
 /* --- SCORE --- */
@@ -50,9 +50,37 @@ header h1 span.instruction {
     color: rgb(0, 0, 0);
 }
 
-.replay a{
-    color: rgb(0, 0, 0);
-    font-size: 2rem;
+/* --- REPLAY BUTTON --- */
+.replay a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem; /* Largeur du bouton */
+    height: 3rem; /* Hauteur du bouton */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Style de l'image à l'intérieur du bouton de refresh */
+.replay a img {
+    width: 2rem; /* Ajuste la taille de l'image */
+    height: 2rem;
+    transition: transform 0.3s ease; /* Transition pour la rotation */
+}
+
+/* Animation de rotation au clic */
+.replay a img.rotate {
+    animation: spin 1s ease-in-out; /* Rotation en 1 seconde */
+}
+
+/* Définition de l'animation */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* --- GAME --- */
@@ -65,21 +93,14 @@ header h1 span.instruction {
 }
 
 /* --- PLAYER & COMPUTER ICONS --- */
-.Player {
-    font-size: 25vh;
-    color: rgb(0, 0, 0);
+.Player img, .Computer img {
+    width: 25vh;
+    height: auto;
     transform: rotate(90deg);
-    visibility: hidden; 
+    visibility: hidden;
 }
 
-.Computer {
-    font-size: 25vh;
-    color: rgb(0, 0, 0);
-    transform: rotate(270deg) scaleX(-1);
-    visibility: hidden; 
-}
-
-/* --- CHOICE --- */
+/* --- CHOICE IMAGES --- */
 .choice {
     display: flex;
     justify-content: center;
@@ -88,26 +109,22 @@ header h1 span.instruction {
     margin-top: 3rem;
 }
 
-.Pierre, .Feuille, .Ciseaux {
-    font-size: 20vh;
-    color: rgb(0, 0, 0);
+.choice section img {
+    width: 20vh;
+    height: auto;
+    transition: transform 0.2s;
 }
 
-.choice section a {
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-    transition: background-color 0.3s, transform 0.2s;
+.choice section img:hover {
+    transform: scale(1.1);
 }
 
-.choice section a:hover {
-    transform: scale(1.1); 
-}
-
-.choice section a:active {
+.choice section img:active {
     transform: scale(0.95);
 }
 
-.choice section i {
-    font-size: 4rem;
-    color: rgb(255, 255, 255); 
+/* --- PLAYER & COMPUTER --- */
+.choice section a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
 }
