@@ -12,7 +12,7 @@ function updateScore() {
 // Fonction pour afficher le choix du joueur
 function displayPlayerChoice(playerChoice) {
     const playerImage = document.querySelector(".Player img");
-    playerImage.src = `assets/img/${playerChoice}.svg`; // Remplacez par le chemin correct de vos images
+    playerImage.src = `assets/img/${playerChoice}.svg`; 
     playerImage.style.visibility = "visible";
     console.log(`Affichage du choix du joueur: ${playerChoice}`);
 }
@@ -20,7 +20,7 @@ function displayPlayerChoice(playerChoice) {
 // Fonction pour afficher le choix de l'ordinateur
 function displayComputerChoice(computerChoice) {
     const computerImage = document.querySelector(".Computer img");
-    computerImage.src = `assets/img/${computerChoice}.svg`; // Remplacez par le chemin correct de vos images
+    computerImage.src = `assets/img/${computerChoice}.svg`; 
     computerImage.style.visibility = "visible";
     console.log(`Affichage du choix de l'ordinateur: ${computerChoice}`);
 }
@@ -43,8 +43,8 @@ function displayResult(result) {
 
     // Mettre à jour le texte du résultat et rendre la section visible
     resultSection.textContent = result;
-    resultSection.style.visibility = "visible"; // Assurez-vous qu'elle est visible
-    resultSection.style.display = "block"; // Ajoutez un display:block si nécessaire
+    resultSection.style.visibility = "visible"; 
+    resultSection.style.display = "block"; 
     console.log(`Résultat affiché: ${result}`);
 }
 
